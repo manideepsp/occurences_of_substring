@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Globalization;
 
 public class MainClass
 {
@@ -14,27 +14,32 @@ public class MainClass
         string subString = Console.ReadLine();
         //Console.WriteLine(subString);
 
-       List<int> listOfOccurredIndexes = new List<int>();
+        List<int> listOfOccurredIndexes = new List<int>();
 
-        int index = 0;
-        foreach( char iterator in originalString)
+        for (int i = 0; i < originalString.Length - subString.Length; i++)
         {
-            foreach( char iterator2 in subString)
+            int flag = 0;
+            if (originalString[i] == subString[0])
             {
-                if( iterator2 != iterator)
+                int tempIndex = i;
+                for (int j = 0; j < subString.Length; j++)
                 {
-                    index++;
-                    continue;
+                    if (originalString[i+j] != subString[j])
+                    {
+                        i = tempIndex;
+                        flag = 1;
+                        break;
+                    }
                 }
-
-                listOfOccurredIndexes.Append(index);
-                
-                index++;
+                if(flag == 0)
+                {
+                    listOfOccurredIndexes.Add(tempIndex);
+                }
             }
         }
-       foreach( char iterator in listOfOccurredIndexes)
+        for (int i = 0; i < listOfOccurredIndexes.Count; i++)
         {
-            Console.WriteLine(iterator);
+            Console.WriteLine(listOfOccurredIndexes[i]);
         }
         Console.ReadKey();
     }
