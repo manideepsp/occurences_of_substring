@@ -1,12 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Xml;
 
 namespace occurences_of_substring
 {
-    public class Class1
+    /// <summary>
+    /// Implements ListOfOccurences method
+    /// </summary>
+    public class Occurences
     {
-        public List<int> Method(string originalString, string subString)
+        /// <summary>
+        /// Takes two strings and returns list of indexes where the sub string occured in main string
+        /// </summary>
+        /// <param name="originalString"></param>
+        /// <param name="subString"></param>
+        /// <returns name="listOfOccurredIndexes"></returns>
+        public List<int> LIstOfOccurences(string originalString, string subString)
         {
             List<int> listOfOccurredIndexes = new List<int>();
 
@@ -19,7 +28,7 @@ namespace occurences_of_substring
                     {
                         if (originalString[i + j] != subString[j])
                         {
-                            flag = false;
+                            flag = false;  //if the characters of both string doesn't match, it says to break for loop and skips adding index to list
                             break;
                         }
                     }
@@ -29,11 +38,7 @@ namespace occurences_of_substring
                     }
                 }
             }
-            
-            for (int i = 0; i < listOfOccurredIndexes.Count; i++)
-            {
-                Console.WriteLine(listOfOccurredIndexes[i]);
-            }
+            return listOfOccurredIndexes;
         }
     }
 }

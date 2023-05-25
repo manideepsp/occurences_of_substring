@@ -13,8 +13,16 @@ public class MainClass
         string subString = Console.ReadLine();
         //Console.WriteLine(subString);
 
-        Class1 obj = new Class1();
-        Console.WriteLine(obj.Method(originalString, subString));
+        #region objects
+        Validation validate = new Validation();
+        Occurences list = new Occurences();
+        PrintOutput display = new PrintOutput();
+        #endregion
+
+        if(validate.EdgeCases(originalString, subString)) display.ErrorMessage();
+
+        display.OutPut(list.LIstOfOccurences(originalString, subString));
+
         Console.ReadKey();
     }
 }
